@@ -1,0 +1,354 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4A98F7;
+  min-height: 100vh;
+}
+
+.container {
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  user-select: none;
+  height: 100vh;
+}
+
+section {
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tools-board {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 22px 0;
+}
+
+.tools-board .row {
+  margin-bottom: 20px;
+}
+
+.row .title {
+  color: #333;
+  font-size: 1rem;
+}
+
+.row .options {
+  list-style: none;
+  margin: 10px 0 0 5px;
+}
+
+.row .options .option {
+  display: flex;
+  user-select: none;
+  cursor: pointer;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.row .options .option img {
+  width: 17px;
+}
+
+.option:is(:hover, .active) img {
+  filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+
+.option :where(span, label) {
+  color: #5A6168;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.option:is(:hover, .active) :where(span, label) {
+  color: #4A98F7;
+}
+
+.option input[type="checkbox"] {
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked~label {
+  color: #4A98F7;
+}
+
+.option #brush-size-slider {
+  width: 100%;
+  height: 5px;
+  margin-top: 10px;
+}
+
+.tools-board .colors-tool {
+  margin-top: 25px;
+}
+
+.tools-board .colors {
+  display: flex;
+  justify-content: space-between;
+}
+
+.colors .option {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  margin-top: 3px;
+  border-radius: 50%;
+}
+
+.colors .option:nth-child(1) {
+  background-color: #fff;
+  border: 1px solid #bfbfbf;
+}
+
+.colors .option:nth-child(2) {
+  background-color: #000;
+}
+
+.colors .option:nth-child(3) {
+  background-color: #E02020;
+}
+
+.colors .option:nth-child(4) {
+  background-color: #6DD400;
+}
+
+.colors .option:nth-child(5) {
+  background-color: #f34f4f;
+  background-image: linear-gradient(#3c3cff, #f34f4f);
+}
+
+.colors .option.active:nth-child(5) {
+  background-image: none;
+}
+
+.colors .option.selected:before {
+  content: "";
+  top: 50%;
+  left: 50%;
+  height: 12px;
+  width: 12px;
+  background: inherit;
+  position: absolute;
+  border: 2px solid #fff;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+}
+
+.colors .option:first-child.selected:before {
+  border-color: #ccc;
+}
+
+.colors #color-picker {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.buttons button {
+  width: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 11px 0;
+  font-size: 0.9rem;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 13px;
+  transition: all 0.3s ease;
+}
+
+.buttons .clear-canvas {
+  color: #6C757D;
+  border: 1px solid #6C757D;
+}
+
+.buttons .clear-canvas:hover {
+  color: #fff;
+  background: #6C757D;
+}
+
+.buttons .save-img {
+  background: #4A98F7;
+  border: 1px solid #4A98F7;
+}
+
+.buttons .save-img:hover {
+  background: #2382f6;
+}
+
+.drawing-board {
+  flex: 1;
+  overflow: hidden;
+}
+
+.drawing-board canvas {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    gap: 10px;
+  }
+
+  .tools-board {
+    width: 180px;
+    padding: 15px 15px 0;
+  }
+
+  section {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) and (orientation: landscape) {
+  .container {
+    gap: 5px;
+    padding: 5px;
+  }
+ 
+  .tools-board {
+    width: 160px;
+    /* max-height: 80%; */
+    overflow-y: auto;
+    padding: 8px 13px 0;
+  }
+
+  .drawing-board {
+    /* max-height: 80%; */
+  }
+
+  .tools-board .row {
+    margin-bottom: 5px;
+  }
+
+  .row .options {
+    margin: 8px 0 0 4px;
+  }
+
+  .row .title {
+    font-size: 0.9rem;
+  }
+
+  .row .options .option img {
+    width: 15px;
+  }
+
+  .colors .option {
+    height: 18px;
+    width: 18px;
+  }
+
+  .option :where(span, label) {
+    display: none;
+  }
+
+  .shapes-tool .options {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .options-tool .options {
+    display: flex;
+    width: 100%;
+  }
+
+  .options-tool .option {
+    width: calc(100% / 2);
+  }
+
+  .options-tool .option:last-child {
+    width: 100%;
+    display: block;
+  }
+
+  .tools-board .colors-tool {
+    margin-top: 0;
+  }
+
+  .colors-tool .option:nth-child(4) {
+    display: none;
+  }
+
+  .colors .option.selected:before {
+    height: 10px;
+    width: 10px;
+  }
+
+}
+
+@media screen and (max-width: 550px) and (orientation:portrait) {
+  body {
+    align-items: flex-start;
+  }
+
+  .container {
+    gap: 5px;
+    padding: 8px;
+    flex-direction: column;
+  }
+
+  .tools-board {
+    width: 100%;
+    order: 2;
+    display: block;
+    padding: 15px 20px 0;
+  }
+
+  .tools-board .row {
+    margin-bottom: 10px;
+  }
+
+  .row .options .option img {
+    width: 18px;
+  }
+
+  .option span {
+    display: none;
+  }
+
+  .row .options {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .row .options .option {
+    margin-bottom: 5px;
+  }
+
+  .option input[type="checkbox"] {
+    height: 17px;
+    width: 17px;
+  }
+
+  .tools-board .colors .option {
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .drawing-board {
+    order: 1;
+    max-height: 400px;
+  }
+}

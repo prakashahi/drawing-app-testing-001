@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drawing App JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="tools-board">
+        <div class="all-tools">
+          <div class="row shapes-tool">
+            <label class="title">Shapes</label>
+            <ul class="options">
+              <li class="option tool" id="rect">
+                <img src="icons/rectangle.svg" draggable="false" alt="rectangle">
+                <span>Rectangle</span>
+              </li>
+              <li class="option tool" id="circle">
+                <img src="icons/circle.svg" draggable="false" alt="circle.svg">
+                <span>Circle</span>
+              </li>
+              <li class="option tool" id="triangle">
+                <img src="icons/triangle.svg" draggable="false" alt="triangle.svg">
+                <span>Triangle</span>
+              </li>
+              <li class="option">
+                <input type="checkbox" id="fill-color">
+                <label for="fill-color">Fill color</label>
+              </li>
+            </ul>
+          </div>
+          <div class="row options-tool">
+            <label class="title">Options</label>
+            <ul class="options">
+              <li class="option tool active" id="brush">
+                <img src="icons/brush.svg" draggable="false" alt="brush.svg">
+                <span>Brush</span>
+              </li>
+              <li class="option tool" id="eraser">
+                <img src="icons/eraser.svg" draggable="false" alt="eraser.svg">
+                <span>Eraser</span>
+              </li>
+              <li class="option">
+                <input type="range" id="brush-size-slider" min="1" max="100" value="5">
+              </li>
+            </ul>
+          </div>
+          <div class="row colors-tool">
+            <label class="title">Colors</label>
+            <ul class="options colors">
+              <li class="option"></li>
+              <li class="option selected"></li>
+              <li class="option"></li>
+              <li class="option"></li>
+              <li class="option">
+                <input type="color" id="color-picker">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row buttons">
+          <button class="clear-canvas">Clear Canvas</button>
+          <button class="save-img">Save As Image</button>
+        </div>
+      </section>
+      <section class="drawing-board">
+        <canvas></canvas>
+      </section>
+    </div>
+   
+  </body>
+</html>
