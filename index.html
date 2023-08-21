@@ -10,8 +10,8 @@
   <body>
     <div class="container">
       <section class="tools-board">
-        <div class="all-tools">
-          <div class="row shapes-tool">
+        <div class="all-tools shapes-tool">
+          <div class="row">
             <label class="title">Shapes</label>
             <ul class="options">
               <li class="option tool" id="rect">
@@ -62,14 +62,20 @@
           </div>
         </div>
         <div class="row buttons">
-          <button class="clear-canvas">Clear Canvas</button>
-          <button class="save-img">Save As Image</button>
+          <button class="clear-canvas">
+            <img src="icons/clear.svg" draggable="false" alt="clear.svg">
+            <span>Clear Canvas</span>
+          </button>
+          <button class="save-img">
+            <img src="icons/save.svg" draggable="false" alt="save.svg">
+            <span>Save As Image</span>
+          </button>
         </div>
       </section>
       <section class="drawing-board">
         <canvas></canvas>
       </section>
     </div>
-   
+    
   </body>
 </html>

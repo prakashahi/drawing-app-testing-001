@@ -10,34 +10,6 @@ const saveImgBtn = document.querySelector(".save-img");
 const ctx = canvas.getContext("2d");
 
 
-function handleOrientationChange() {
-    if (window.innerHeight < window.innerWidth) {
-        var element = document.documentElement;
-        if (element.requestFullscreen) {
-          element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-          element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) {
-          element.msRequestFullscreen();
-        }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-    }
-  }
-
-
-window.addEventListener("click", handleOrientationChange);
-
 // Global variables for drawing
 let isDrawing = false;
 let brushSize = 5;
@@ -48,6 +20,9 @@ let canvasSnapshot = null;
 
 // Function to reset the canvas
 const resetCanvas = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--doc-height', `${window.innerHeight}px`);
+    
     const dpr = window.devicePixelRatio || 1;
     const canvasRect = canvas.getBoundingClientRect();
     canvas.width = canvasRect.width * dpr;
@@ -69,7 +44,7 @@ const drawRectangle = (position) => {
     ctx.beginPath();
     const width = position.x - prevMousePoint.x;
     const height = position.y - prevMousePoint.y;
-   
+    
     ctx.rect(prevMousePoint.x, prevMousePoint.y, width, height);
 
     fillColorCheckbox.checked ? ctx.fill() : ctx.stroke();
@@ -114,7 +89,7 @@ const drawing = (e) => {
     let position = currMousePoint(e);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.putImageData(canvasSnapshot, 0, 0);
-   
+    
     if(selectedTool === "brush" || selectedTool === "eraser") {
         ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
         ctx.lineTo(position.x, position.y);
